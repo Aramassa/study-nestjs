@@ -13,7 +13,7 @@ export class MembersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} member`;
+    return {hello: "test"};
   }
 
   update(id: number, updateMemberDto: UpdateMemberDto) {
