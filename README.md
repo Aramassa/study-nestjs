@@ -1,4 +1,4 @@
-# study-nextjs
+# study-nestjs
 Study NestJS
 
 # 準備する
