@@ -1,0 +1,113 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /members:
+    post:
+      operationId: MembersController_create
+      summary: 単体登録API
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMemberDto'
+      responses:
+        '201':
+          description: 登録したメンバー設定を返却
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Member'
+      tags: &ref_0
+        - /members
+    get:
+      operationId: MembersController_findAll
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags: *ref_0
+  /members/{id}:
+    get:
+      operationId: MembersController_findOne
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags: *ref_0
+    patch:
+      operationId: MembersController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMemberDto'
+      responses:
+        '200':
+          description: ''
+      tags: *ref_0
+    delete:
+      operationId: MembersController_remove
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      tags: *ref_0
+info:
+  title: Members API docs
+  description: MembersのAPI仕様書です。
+  version: '1.0'
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas:
+    CreateMemberDto:
+      type: object
+      properties: {}
+    Member:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+          description: メンバーID
+        name:
+          type: string
+          example: アルファ太郎
+          description: メンバーの氏名
+        age:
+          type: number
+          example: 25
+          description: メンバーの年齢
+      required:
+        - id
+        - name
+        - age
+    UpdateMemberDto:
+      type: object
+      properties: {}
